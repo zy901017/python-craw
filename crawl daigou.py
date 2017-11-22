@@ -7,7 +7,7 @@ key=soup.find_all('span','imp') #在解析出来的SOUP中提取 html标签名�
 key2=soup.find_all('span','pri') #----------html标签名为'span'与class属性为'pri'的数据--产品价格形成list
 names=[] #空列表用于存储产品名字
 for name in key: #遍历产品名字list
-    names.append(name.string) #name.string 意思是什么意思？？？？
+    names.append(name.string) 
 print(names)
 prices=[]
 for price in key2:
@@ -20,10 +20,9 @@ product_details=dict(zip(keys,values))
 print(product_details)
 
 # 读取数据存入数据库中
-
-import pandas
-
-
+import pandas as pd
+df=pd.Series(product_details)
+df.to_csv('product_details.csv')
 
 #再次爬取价格
 #使用字典组合生成 产品名字：价格组合
